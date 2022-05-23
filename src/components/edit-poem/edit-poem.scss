@@ -1,0 +1,41 @@
+.edit-poem-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 6rem auto 0;
+  background-color: #ffffff;
+  padding: 1rem 1rem 2rem 1rem;
+  border-radius: 5px;
+  position: relative;
+
+  @media screen and (min-width: 641px) {
+    width: 70%;
+    padding: 2rem;
+  }
+
+  @media screen and (min-width: 1008px) {
+    width: 50%;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+  }
+}
+
+.edit-poem__error {
+  position: absolute;
+  bottom: -0.5rem;
+  left: 1rem;
+  color: red;
+  font-size: 0.7rem;
+
+  @media screen and (min-width: 641px) {
+    bottom: 0rem;
+    left: 2rem;
+  }
+}

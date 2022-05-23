@@ -1,0 +1,10 @@
+.app-bar {
+  position: relative;
+  padding-bottom: 3rem;
+
+  &__logout {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
