@@ -1,6 +1,7 @@
 .poem-item {
   padding: 2rem 0;
   position: relative;
+  user-select: none;
 
   &__link {
     position: absolute;

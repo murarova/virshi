@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client'
 import React from 'react'
 import { Provider } from 'react-redux'
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import { BrowserRouter } from "react-router-dom";
 
 import firebase from 'firebase/compat/app';
@@ -12,6 +12,7 @@ import {
   ReactReduxFirebaseProvider,
   firebaseReducer,
 } from 'react-redux-firebase'
+import orderNumberReducer from "./redux/orderNumberReducer";
 
 import App from './App'
 import { firebaseConfig } from './config/firebase-config'
@@ -23,8 +24,13 @@ const rrfConfig = {
   userProfile: 'users',
 }
 
+const rootReducer = combineReducers({
+  firebase: firebaseReducer,
+  orderNumberReducer
+})
+
 export const store = configureStore({
-  reducer: firebaseReducer,
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
@@ -39,12 +45,12 @@ const rrfProps = {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={store}>
-    <ReactReduxFirebaseProvider {...rrfProps}>
+  <Provider store={ store }>
+    <ReactReduxFirebaseProvider { ...rrfProps }>
       <BrowserRouter>
-      <App />
+        <App />
       </BrowserRouter>
-      
+
     </ReactReduxFirebaseProvider>
   </Provider>
 )

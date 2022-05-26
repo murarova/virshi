@@ -15,7 +15,7 @@ import { isEmpty, isLoaded } from "react-redux-firebase";
 function App() {
   const [ search, updateSearch ] = useState('');
 
-  const auth = useSelector((state) => state.auth)
+  const auth = useSelector((state) => state.firebase.auth)
   const isLoggedIn = isLoaded(auth) && !isEmpty(auth)
 
   return (

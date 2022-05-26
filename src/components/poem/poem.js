@@ -1,5 +1,5 @@
 import { useSearch } from "../../hooks/use-search";
-import { getHighlightedText, makeContent } from "../../utils/utils";
+import { getHighlightedText, getTitleLink } from "../../utils/utils";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
@@ -14,7 +14,7 @@ export function Poem({ poem, id }) {
   const firebase = useFirebase()
   const { title, text, date } = poem;
   const { search } = useSearch();
-  const { link } = makeContent(poem);
+  const link = getTitleLink(title, text);
   const { isLoggedIn } = useAuth()
 
   const [ isEdit, setIsEdit ] = useState(false);

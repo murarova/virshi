@@ -13,8 +13,8 @@ const Input = styled(TextField)(({ theme }) => ({
 
 export function LoginPage() {
   const firebase = useFirebase()
-  const auth = useSelector((state) => state.auth)
-  const authError = useSelector((state) => state.authError)
+  const auth = useSelector((state) => state.firebase.auth)
+  const authError = useSelector((state) => state.firebase.authError)
 
   const [ credentials, setCredentials ] = useState({
     email: '',

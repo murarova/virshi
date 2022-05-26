@@ -1,31 +1,44 @@
-export const sortByDateTime = (a, b) => {
-  if (b.value.createdAt < a.value.createdAt) {
+export const sortByOrderNumber = (a, b) => {
+  if (b.value.orderNumber < a.value.orderNumber) {
     return -1
   }
-  if (b.value.createdAt > a.value.createdAt) {
+  if (b.value.orderNumber > a.value.orderNumber) {
     return 1
   }
   return 0
 }
 
-export const makeContent = ({ title, text }) => {
+export const makeContent = ({ value = { title: "", text: "" }, key }) => {
+  const { title, text } = value;
+
   if (title) {
     return ({
+      id: key,
       title,
       link: makeLinkFromTitle(title)
     })
   } else {
     const newTitle = text?.split('\n')[ 0 ];
     return ({
+      id: key,
       title: newTitle,
       link: makeLinkFromTitle(newTitle)
     })
   }
 }
 
+export function getTitleLink(title, text) {
+  if (title) {
+    return makeLinkFromTitle(title)
+  } else {
+    const newTitle = text?.split('\n')[ 0 ];
+    return makeLinkFromTitle(newTitle)
+  }
+}
+
 export const makeContents = (poems) => {
   if (!poems) return []
-  return poems.map(({ value }) => makeContent(value))
+  return poems.map(makeContent)
 }
 
 export function getHighlightedText(text, highlight) {
